@@ -4,7 +4,7 @@
 	let topAppBar: TopAppBar;
 </script>
 
-<TopAppBar bind:this={topAppBar} variant="fixed" color="primary">
+<TopAppBar bind:this={topAppBar} variant="fixed" color="secondary" class="mdc-elevation--z1">
 	<Row>
 		<Section>
 			<img class="logo" src="/icon.png" alt="" />
