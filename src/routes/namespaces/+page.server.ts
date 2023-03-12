@@ -1,7 +1,7 @@
-import kc from '$lib/server/kubeconfig';
+import kc from '$lib/server/kc';
 import k8s from '@kubernetes/client-node';
 
-export async function load({ params }) {
+export async function load() {
 	const coreV1Api = kc.makeApiClient(k8s.CoreV1Api);
 
 	const {
