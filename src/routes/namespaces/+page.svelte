@@ -1,12 +1,30 @@
 <script lang="ts">
 	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import Textfield from '@smui/textfield';
+	import Icon from '@smui/textfield/icon';
 
 	import type Namespace from './namespace';
 	export let data: { namespaces: Namespace[] };
 	const { namespaces } = data;
+	let search = '';
+
+	$: filteredNamespaces = search
+		? namespaces.filter((ns) => ns.metadata.name.toLocaleLowerCase().includes(String(search)))
+		: namespaces;
 </script>
 
+<div class="breadcrumbs">
+	<span>Cluster</span>
+	<span>/</span>
+</div>
+
 <h2>Namespaces</h2>
+
+<p>
+	<Textfield bind:value={search} label="Search">
+		<Icon class="material-icons" slot="trailingIcon">search</Icon>
+	</Textfield>
+</p>
 
 <DataTable style="width: 100%;">
 	<Head>
@@ -16,7 +34,7 @@
 		</Row>
 	</Head>
 	<Body>
-		{#each namespaces as namespace}
+		{#each filteredNamespaces as namespace}
 			<Row>
 				<Cell>
 					<a href={`/namespaces/${namespace.metadata.name}/pods/`}>
