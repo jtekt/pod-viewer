@@ -25,7 +25,7 @@
 
 <h2>{namespaceName}</h2>
 <p>
-	<Textfield bind:value={search} label="Search">
+	<Textfield bind:value={search} label="Search" input$emptyValueUndefined>
 		<Icon class="material-icons" slot="trailingIcon">search</Icon>
 	</Textfield>
 </p>
