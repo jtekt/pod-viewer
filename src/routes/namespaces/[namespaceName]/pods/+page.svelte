@@ -17,11 +17,11 @@
 		: pods;
 </script>
 
-<div class="breadcrumbs">
+<p>
 	<a href={`/namespaces`}>Cluster</a>
 	<span>/</span>
 	<span>{namespaceName}</span>
-</div>
+</p>
 
 <h2>{namespaceName}</h2>
 <p>

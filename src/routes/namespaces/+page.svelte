@@ -13,10 +13,10 @@
 		: namespaces;
 </script>
 
-<div class="breadcrumbs">
+<p>
 	<span>Cluster</span>
 	<span>/</span>
-</div>
+</p>
 
 <h2>Namespaces</h2>
 

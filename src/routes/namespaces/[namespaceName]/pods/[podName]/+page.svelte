@@ -10,13 +10,13 @@
 	const showEnvVars = false;
 </script>
 
-<div class="breadcrumbs">
+<p>
 	<a href={`/namespaces`}>Cluster</a>
 	<span>/</span>
 	<a href={`/namespaces/${namespaceName}/pods`}>{namespaceName}</a>
 	<span>/</span>
 	<span>{podName}</span>
-</div>
+</p>
 
 <h2>{podName}</h2>
 

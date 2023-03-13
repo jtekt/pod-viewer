@@ -13,13 +13,11 @@
 	</Row>
 </TopAppBar>
 <AutoAdjust {topAppBar}>
-	<main>
-		<slot />
-	</main>
+	<slot />
 </AutoAdjust>
 
 <style>
-	main {
+	:global(main) {
 		max-width: 80rem;
 		margin-inline: auto;
 	}
