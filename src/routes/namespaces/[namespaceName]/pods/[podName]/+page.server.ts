@@ -6,8 +6,16 @@ export async function load({ params }) {
 
 	const { podName, namespaceName } = params;
 
+	let logs = 'Logs not available';
+
 	const { body: pod } = await coreV1Api.readNamespacedPod(podName, namespaceName);
-	const { body: logs } = await coreV1Api.readNamespacedPodLog(podName, namespaceName);
+
+	try {
+		const { body } = await coreV1Api.readNamespacedPodLog(podName, namespaceName);
+		logs = body;
+	} catch (error: any) {
+		console.error(error?.body?.message);
+	}
 
 	const containers = pod.spec?.containers;
 
