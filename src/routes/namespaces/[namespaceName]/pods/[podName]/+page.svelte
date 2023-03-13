@@ -54,8 +54,9 @@
 <style>
 	pre {
 		padding: 1rem;
-		background-color: black;
+		background-color: #444444;
 		color: white;
 		overflow-x: auto;
+		border-radius: 0.5em;
 	}
 </style>
