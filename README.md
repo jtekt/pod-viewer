@@ -29,3 +29,5 @@ subjects:
     name: my-service-account
     namespace: my-namespace
 ```
+
+Pod viewer can then be deployed using a manifest such as [that provided in this repository](/kubernetes_manifest.yml)
