@@ -1,16 +1,20 @@
 <script lang="ts">
-	export let status: string;
+	export let phase: string;
 </script>
 
-<span class={status}>{status}</span>
+<span class={phase}>{phase}</span>
 
 <style>
-	span:not(.Running) {
+	span:is(.Failed, .Unknown) {
 		background-color: rgb(223, 154, 154);
 	}
 
-	span.Running {
+	span:is(.Succeeded, .Running) {
 		background-color: rgb(160, 223, 154);
+	}
+
+	span:is(.Pending) {
+		background-color: rgb(154, 184, 223);
 	}
 
 	span {

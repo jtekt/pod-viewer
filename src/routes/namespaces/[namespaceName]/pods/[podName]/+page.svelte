@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Pod } from '../pod';
 	import { page } from '$app/stores';
-	import StatusIndicator from '$lib/StatusIndicator.svelte';
+	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
 	import List, { Item, Graphic, Meta, Text, PrimaryText, SecondaryText } from '@smui/list';
 
 	export let data: { pod: Pod; logs: string };
@@ -21,7 +21,7 @@
 <h2>{podName}</h2>
 
 <p>
-	Status: <StatusIndicator status={pod.status.phase} />
+	Status: <PhaseIndicator phase={pod.status.phase} />
 </p>
 
 <h3 style="margin-bottom: 0;">Containers</h3>

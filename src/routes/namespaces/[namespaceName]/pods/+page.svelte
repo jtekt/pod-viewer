@@ -5,7 +5,7 @@
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
 
-	import StatusIndicator from '$lib/StatusIndicator.svelte';
+	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
 
 	export let data: { pods: Pod[] };
 	const { pods } = data;
@@ -46,7 +46,7 @@
 						</a>
 					</Cell>
 					<Cell>
-						<StatusIndicator status={pod.status.phase} />
+						<PhaseIndicator phase={pod.status.phase} />
 					</Cell>
 				</Row>
 			{/each}
