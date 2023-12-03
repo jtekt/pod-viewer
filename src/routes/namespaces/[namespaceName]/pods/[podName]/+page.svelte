@@ -1,13 +1,19 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Pod } from '../pod';
 	import { page } from '$app/stores';
 	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
-	import List, { Item, Graphic, Meta, Text, PrimaryText, SecondaryText } from '@smui/list';
+	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 
 	export let data: { pod: Pod; logs: string };
 	const { pod, logs } = data;
 	const { namespaceName, podName } = $page.params;
 	const showEnvVars = false;
+	let logsContainer: HTMLPreElement;
+
+	onMount(() => {
+		logsContainer.scrollTop = logsContainer.scrollHeight;
+	});
 </script>
 
 <p>
@@ -37,19 +43,8 @@
 	{/each}
 </List>
 
-<!-- 
-	<h4>{container.name}</h4>
-	<p>Image: {container.image}</p>
-
-{#if showEnvVars}
-		<h5>Environment variables</h5>
-		{#each container.env as envVar}
-			<p>{envVar.name}: {envVar.value}</p>
-		{/each}
-	{/if} -->
-
 <h3>Logs</h3>
-<pre><code>{logs}</code></pre>
+<pre bind:this={logsContainer}><code>{logs}</code></pre>
 
 <style>
 	pre {
@@ -58,5 +53,6 @@
 		color: white;
 		overflow-x: auto;
 		border-radius: 0.5em;
+		max-height: 80vh;
 	}
 </style>
