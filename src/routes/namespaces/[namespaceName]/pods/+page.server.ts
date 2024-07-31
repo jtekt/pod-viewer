@@ -10,12 +10,15 @@ export async function load({ params }) {
 		body: { items }
 	} = await coreV1Api.listNamespacedPod(namespaceName);
 
+	console.log(items[0]);
+
 	const pods = items.map((item) => ({
 		metadata: {
 			name: item.metadata?.name
 		},
 		status: {
-			phase: item.status?.phase
+			phase: item.status?.phase,
+			startTime: item.status?.startTime
 		}
 	}));
 

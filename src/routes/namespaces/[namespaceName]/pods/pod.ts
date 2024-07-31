@@ -18,5 +18,6 @@ export interface Pod {
 	};
 	status: {
 		phase: string;
+		startTime: Date;
 	};
 }

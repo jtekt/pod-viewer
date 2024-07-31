@@ -6,9 +6,11 @@
 	import Icon from '@smui/textfield/icon';
 
 	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
+	import TimeIndicator from '$lib/TimeIndicator.svelte';
 
 	export let data: { pods: Pod[] };
 	const { pods } = data;
+
 	const { namespaceName } = $page.params;
 	let search = '';
 
@@ -34,7 +36,8 @@
 		<Head>
 			<Row>
 				<Cell style="width: 100%;">Name</Cell>
-				<Cell>Phase</Cell>
+				<Cell>Age</Cell>
+				<Cell>Start time</Cell>
 			</Row>
 		</Head>
 		<Body>
@@ -47,6 +50,9 @@
 					</Cell>
 					<Cell>
 						<PhaseIndicator phase={pod.status.phase} />
+					</Cell>
+					<Cell>
+						<TimeIndicator startTime={pod.status.startTime} />
 					</Cell>
 				</Row>
 			{/each}

@@ -33,7 +33,8 @@ export async function load({ params }) {
 				}))
 			},
 			status: {
-				phase: pod.status?.phase
+				phase: pod.status?.phase,
+				startTime: pod.status?.startTime
 			}
 		}
 	};
