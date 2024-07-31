@@ -36,7 +36,7 @@
 		<Head>
 			<Row>
 				<Cell style="width: 100%;">Name</Cell>
-				<Cell>Age</Cell>
+				<Cell>Status</Cell>
 				<Cell>Start time</Cell>
 			</Row>
 		</Head>
