@@ -1,11 +1,11 @@
 <script lang="ts">
-	export let phase: string;
+	export let status: any;
 </script>
 
-<span class={phase}>{phase}</span>
+<span class={status.state}>{status.state}</span>
 
 <style>
-	span:is(.Failed, .Unknown) {
+	span:is(.Failed, .Unknown, .ImagePullBackOff) {
 		background-color: rgb(223, 154, 154);
 	}
 
@@ -18,7 +18,9 @@
 	}
 
 	span {
+		color: black;
 		padding: 0.5em 0.75em;
 		border-radius: 1000px;
+		background-color: rgb(223, 213, 154);
 	}
 </style>

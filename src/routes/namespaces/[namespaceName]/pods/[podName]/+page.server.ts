@@ -1,4 +1,5 @@
 import kc from '$lib/server/kc';
+import { formaPodtState } from '$lib/server/utils.js';
 import k8s from '@kubernetes/client-node';
 
 export async function load({ params }) {
@@ -34,7 +35,8 @@ export async function load({ params }) {
 			},
 			status: {
 				phase: pod.status?.phase,
-				startTime: pod.status?.startTime
+				startTime: pod.status?.startTime,
+				state: formaPodtState(pod)
 			}
 		}
 	};

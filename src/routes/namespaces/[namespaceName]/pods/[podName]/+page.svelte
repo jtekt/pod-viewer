@@ -2,8 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Pod } from '../pod';
 	import { page } from '$app/stores';
-	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
-	import TimeIndicator from '$lib/TimeIndicator.svelte';
+	import StatusIndicator from '$lib/StatusIndicator.svelte';
 	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 
 	export let data: { pod: Pod; logs: string };
@@ -28,12 +27,7 @@
 <h2>{podName}</h2>
 
 <div class="status">
-	<div>
-		Status: <PhaseIndicator phase={pod.status.phase} />
-	</div>
-	<div>
-		Start time: <TimeIndicator startTime={pod.status.startTime} />
-	</div>
+	<StatusIndicator status={pod.status} />
 </div>
 
 <h3 style="margin-bottom: 0;">Containers</h3>

@@ -1,4 +1,5 @@
 import kc from '$lib/server/kc';
+import { formaPodtState } from '$lib/server/utils.js';
 import k8s from '@kubernetes/client-node';
 
 export async function load({ params }) {
@@ -10,17 +11,18 @@ export async function load({ params }) {
 		body: { items }
 	} = await coreV1Api.listNamespacedPod(namespaceName);
 
-	console.log(items[0]);
-
-	const pods = items.map((item) => ({
-		metadata: {
-			name: item.metadata?.name
-		},
-		status: {
-			phase: item.status?.phase,
-			startTime: item.status?.startTime
-		}
-	}));
+	const pods = items.map((pod) => {
+		return {
+			metadata: {
+				name: pod.metadata?.name
+			},
+			status: {
+				phase: pod.status?.phase,
+				startTime: pod.status?.startTime,
+				state: formaPodtState(pod)
+			}
+		};
+	});
 
 	return { pods };
 }

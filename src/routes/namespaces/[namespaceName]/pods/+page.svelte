@@ -5,8 +5,7 @@
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
 
-	import PhaseIndicator from '$lib/PhaseIndicator.svelte';
-	import TimeIndicator from '$lib/TimeIndicator.svelte';
+	import StatusIndicator from '$lib/StatusIndicator.svelte';
 
 	export let data: { pods: Pod[] };
 	const { pods } = data;
@@ -37,7 +36,6 @@
 			<Row>
 				<Cell style="width: 100%;">Name</Cell>
 				<Cell>Status</Cell>
-				<Cell>Start time</Cell>
 			</Row>
 		</Head>
 		<Body>
@@ -49,10 +47,7 @@
 						</a>
 					</Cell>
 					<Cell>
-						<PhaseIndicator phase={pod.status.phase} />
-					</Cell>
-					<Cell>
-						<TimeIndicator startTime={pod.status.startTime} />
+						<StatusIndicator status={pod.status} />
 					</Cell>
 				</Row>
 			{/each}
