@@ -5,7 +5,7 @@
 <span class={status.state}>{status.state}</span>
 
 <style>
-	span:is(.Failed, .Unknown, .ImagePullBackOff) {
+	span:is(.Failed, .Unknown, .ImagePullBackOff, .CrashLoopBackOff) {
 		background-color: rgb(223, 154, 154);
 	}
 
