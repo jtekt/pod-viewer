@@ -32,3 +32,27 @@ spec:
   selector:
     app: ${APPLICATION_NAME}
   type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ${APPLICATION_NAME}
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: DevOps
+    gethomepage.dev/name: Pod Viewer
+    gethomepage.dev/description: Status and logs
+    gethomepage.dev/icon: https://raw.githubusercontent.com/kubernetes/community/refs/heads/master/icons/png/resources/labeled/pod-256.png
+    gethomepage.dev/pod-selector: app=${APPLICATION_NAME}
+spec:
+  rules:
+    - host: pod-viewer.higashikariya.jtektrnd.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ${APPLICATION_NAME}
+                port:
+                  number: 3000
