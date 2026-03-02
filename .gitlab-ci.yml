@@ -1,11 +1,3 @@
-stages:
-  - build
-  - deploy
-
-image: moreillon/ci-dind:4bca50d7
-services:
-  - name: docker:20.10.18-dind
-
 variables:
   APPLICATION_NAME: pod-viewer
   CONTAINER_IMAGE_NAME: ${APPLICATION_NAME}
@@ -14,16 +6,11 @@ variables:
   K8S_NODEPORT: 31030
   K8S_SERVICEACCOUNT: moreillon
 
-build:
+build-job:
   stage: build
   only:
     - tags
-  tags:
-    - dind
   before_script:
-    # Registry login
-    - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ECR_PUBLIC_URL}
-    # Create repository in ECR if it does not exist yet
     - >
       aws ecr-public create-repository --region us-east-1 --repository-name ${APPLICATION_NAME}
       || echo "Repository might have already existed"
@@ -34,10 +21,8 @@ build:
     - docker push ${CONTAINER_IMAGE}
     - docker push ${CONTAINER_IMAGE_TAGGED}
 
-deploy:
+deploy-job:
   stage: deploy
-  tags:
-    - dind
   only:
     - tags
   script:
